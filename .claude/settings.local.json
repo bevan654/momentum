@@ -20,7 +20,8 @@
       "Bash(git add App.tsx components/friends/ActivityFeed.tsx components/friends/FriendList.tsx components/friends/FriendProfileModal.tsx components/friends/FriendsTab.tsx components/friends/NotificationList.tsx exerciseDatabase.ts friendsDatabase.ts package-lock.json)",
       "Bash(git commit -m \"$\\(cat <<''EOF''\nAdd friends/global activity feed toggle and UI updates\n\n- Add getFriendsActivityFeed\\(\\) to filter feed by friends + self\n- Add segmented Friends/Global toggle to ActivityFeed component\n- Update FriendList, FriendProfileModal, NotificationList, and App UI\n- Update exercise database and dependencies\n\nCo-Authored-By: Claude Opus 4.6 <noreply@anthropic.com>\nEOF\n\\)\")",
       "Bash(git push origin main)",
-      "Bash(del \"C:\\\\Users\\\\Bevan\\\\Downloads\\\\momentum\\\\components\\\\friends\\\\SettingsSection.tsx\")"
+      "Bash(del \"C:\\\\Users\\\\Bevan\\\\Downloads\\\\momentum\\\\components\\\\friends\\\\SettingsSection.tsx\")",
+      "Bash(git remote add:*)"
     ]
   }
 }
