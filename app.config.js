@@ -4,7 +4,7 @@ export default {
   expo: {
     name: 'Momentum',
     slug: 'momentum',
-    version: '1.0.0',
+    version: '1.0.1',
     orientation: 'portrait',
     icon: './assets/icon.png',
     userInterfaceStyle: 'light',
@@ -13,7 +13,7 @@ export default {
       url: 'https://u.expo.dev/9aa3909a-d1ee-4fbd-ba1a-520512f75d7f',
     },
     runtimeVersion: {
-      policy: 'appVersion',
+      policy: 'fingerprint',
     },
     splash: {
       image: './assets/splash-icon.png',
@@ -23,6 +23,7 @@ export default {
     ios: {
       supportsTablet: true,
       bundleIdentifier: 'com.momentum.fitnessapp',
+      buildNumber: '2',
       infoPlist: {
         NSUserNotificationsUsageDescription:
           'Momentum uses notifications to alert you when rest timers complete and when friends interact with you.',
@@ -33,6 +34,7 @@ export default {
     android: {
       package: 'com.momentum.fitnessapp',
       versionCode: 1,
+      googleServicesFile: './google-services.json',
       adaptiveIcon: {
         foregroundImage: './assets/adaptive-icon.png',
         backgroundColor: '#0066E6',
@@ -63,6 +65,9 @@ export default {
         'expo-notifications',
         {
           sounds: [],
+          android: {
+            useNextNotificationsApi: true,
+          },
         },
       ],
       [

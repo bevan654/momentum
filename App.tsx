@@ -10,6 +10,8 @@ import {
   Inter_800ExtraBold,
 } from '@expo-google-fonts/inter';
 import * as SplashScreen from 'expo-splash-screen';
+import Constants from 'expo-constants';
+import * as Updates from 'expo-updates';
 import {
   StyleSheet,
   Text,
@@ -794,6 +796,26 @@ function AppContent() {
     AsyncStorage.getItem('streak_show_combined').then((val) => {
       if (val !== null) setShowCombinedStreak(val === 'true');
     });
+  }, []);
+
+  // Check for OTA updates on launch
+  useEffect(() => {
+    if (__DEV__) return;
+    (async () => {
+      try {
+        console.log('OTA: runtimeVersion =', Updates.runtimeVersion);
+        console.log('OTA: channel =', Updates.channel);
+        console.log('OTA: checking for update...');
+        const update = await Updates.checkForUpdateAsync();
+        console.log('OTA: isAvailable =', update.isAvailable);
+        if (update.isAvailable) {
+          await Updates.fetchUpdateAsync();
+          await Updates.reloadAsync();
+        }
+      } catch (e) {
+        console.log('OTA: error =', e);
+      }
+    })();
   }, []);
 
   // Check authentication status (session persisted via AsyncStorage)
@@ -2556,7 +2578,10 @@ function AppContent() {
       <View style={[styles.header, { paddingTop: insets.top + s(10) }]}>
         <View style={styles.headerLeft}>
           <Logo size={s(28)} />
-          <Text style={styles.headerBrandText} numberOfLines={1} adjustsFontSizeToFit>Momentum.</Text>
+          <Text style={styles.headerBrandText} numberOfLines={1} adjustsFontSizeToFit>Momentum</Text>
+          <View style={styles.versionBadge}>
+            <Text style={styles.versionBadgeText}>v{Constants.expoConfig?.version || '1.0.0'}</Text>
+          </View>
         </View>
         <View style={styles.headerRight}>
           <AnimatedStreakBadge value={streaks.gymCurrent} color="#FF9500" bgColor="rgba(255,149,0,0.12)" borderColor="rgba(255,149,0,0.3)" atRisk={streaks.gymAtRisk} />
@@ -3237,7 +3262,7 @@ function AppContent() {
             </TouchableOpacity>
 
             {/* Version */}
-            <Text style={styles.versionText}>v1.0.0</Text>
+            <Text style={styles.versionText}>v{Constants.expoConfig?.version || '1.0.0'}</Text>
 
             <View style={{ height: s(100) }} />
           </ScrollView>
@@ -4335,6 +4360,17 @@ const makeStyles = (c: Colors) => StyleSheet.create({
     color: c.text,
     letterSpacing: s(-0.5),
     flexShrink: 1,
+  },
+  versionBadge: {
+    backgroundColor: c.accent + '18',
+    paddingHorizontal: s(6),
+    paddingVertical: s(2),
+    borderRadius: s(6),
+  },
+  versionBadgeText: {
+    fontSize: s(10),
+    fontFamily: 'Inter_600SemiBold',
+    color: c.accent,
   },
   headerRight: {
     flexDirection: 'row' as const,

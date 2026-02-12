@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "240370974036",
+    "project_id": "momentum-3227b",
+    "storage_bucket": "momentum-3227b.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:240370974036:android:9f6e4914a9dcbd6a32dcc1",
+        "android_client_info": {
+          "package_name": "com.momentum.fitnessapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCEIHvcZtEqMKN8YOFFSA0DMaLJQADnNPg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
