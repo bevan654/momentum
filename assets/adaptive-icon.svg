@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024">
+  <g transform="translate(206.12987012987014, 171.55324675324675) scale(1.3298701298701299)">
+    <path
+      d="M360 152H200M360 152V312M360 152L152 360L100 308L240 168"
+      stroke="white"
+      stroke-width="48"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      fill="none"
+    />
+  </g>
+</svg>
